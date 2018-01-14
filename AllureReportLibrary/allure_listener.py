@@ -17,7 +17,7 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.version import get_version, get_full_version, get_interpreter
 
 from .common import AllureImpl
-from .constants import Robot, SEVERITIES, STATUSSES
+from .constant import Robot, SEVERITIES, STATUSES
 from .structure import AllureProperties, TestCase
 from .util_funcs import clear_directory, copy_dir_contents
 from .version import VERSION
@@ -117,7 +117,7 @@ class AllureListener(object):
                     test.labels.append(TestLabel(
                         name='severity',
                         value=tag))
-                elif tag in STATUSSES:
+                elif tag in STATUSES:
                     test.status = tag
 
         self.PabotPoolId = BuiltIn().get_variable_value(
@@ -188,7 +188,7 @@ class AllureListener(object):
                         value=tag)
                     )
                     test.severity = tag
-                elif tag in STATUSSES:
+                elif tag in STATUSES:
                     test.status = tag
                 else:
                     test.labels.append(TestLabel(

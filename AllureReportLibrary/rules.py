@@ -8,7 +8,10 @@ from AllureReportLibrary.util_funcs import unicode_helper
 
 
 def make_element(name, namespace):
-    return getattr(objectify.ElementMaker(annotate=False, namespace=namespace,), name)
+    return getattr(
+        objectify.ElementMaker(annotate=False, namespace=namespace,),
+        name
+    )
 
 
 class Rule(object):
@@ -37,7 +40,8 @@ class Element(Rule):
         self.namespace = namespace
 
     def value(self, name, data):
-        return make_element(self.name or name, self.namespace)(unicode_helper(data))
+        return make_element(
+            self.name or name, self.namespace)(unicode_helper(data))
 
 
 class Attribute(Rule):
@@ -79,16 +83,19 @@ def xmlfied(el_name, namespace='', fields=[], **kw):
             el = make_element(el_name, namespace)
 
             def entries(cl):
-                return [(name, rule.value(name, getattr(self, name)))
-                        for (name, rule) in items
-                        if isinstance(rule, cl) and rule.check(getattr(self, name))]
+                return [
+                    (name, rule.value(name, getattr(self, name)))
+                    for (name, rule) in items
+                    if isinstance(rule, cl) and rule.check(getattr(self, name))
+                ]
 
             elements = entries(Element)
             attributes = entries(Attribute)
             nested = entries(Nested)
             manys = sum([[(m[0], v) for v in m[1]] for m in entries(Many)], [])
 
-            return el(*([element for (_, element) in elements + nested + manys]),
-                      **dict(attributes))
+            return el(
+                *([element for (_, element) in elements + nested + manys]),
+                **dict(attributes))
 
     return Listener

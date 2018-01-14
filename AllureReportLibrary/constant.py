@@ -30,6 +30,7 @@ class Robot(object):
 
 
 SEVERITIES = ['blocker', 'critical', 'normal', 'minor', 'trivial']
-ROBOT_OUTPUT_FILES = ['output.xml','log.html','report.html']
+ROBOT_OUTPUT_FILES = ['output.xml', 'log.html', 'report.html']
 ALLURE_NAMESPACE = "urn:model.allure.qatools.yandex.ru"
 COMMON_NAMESPACE = "urn:model.commons.qatools.yandex.ru"
+STATUSES = ['failed', 'broken', 'canceled', 'pending', 'passed']
