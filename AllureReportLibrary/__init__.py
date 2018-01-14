@@ -1,9 +1,9 @@
-from AllureReportLibrary import *
-from AllureListener import *
-from version import VERSION
-from common import *
-from structure import *
-from constants import *
+from .allure_report import *
+from .allure_listener import *
+from .version import VERSION
+from .common import *
+from .structure import *
+from .constants import *
 
 '''Some Allure descriptive line'''
 _version_ = VERSION
