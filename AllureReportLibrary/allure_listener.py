@@ -158,7 +158,9 @@ class AllureListener(object):
         return
 
     def end_test(self, name, attributes):
-        test = self.stack.pop()
+        if not self.stack:
+            return
+        test = self.stack[-1]
 
         if attributes.get('status') == Robot.PASS:
             test.status = Status.PASSED
@@ -388,17 +390,11 @@ class AllureListener(object):
                     '[a-z]+-[a-z]+-[0-9]+.png',
                     msg['message']
                 )
-                if screenshot:
+                if screenshot is not None:
                     self.attach(
                         '{}'.format(screenshot.group(0)),
                         screenshot.group(0)
                     )
-            if msg['html'] == 'yes':
-                screenshot = re.search(
-                    '[a-z]+-[a-z]+-[0-9]+.png',
-                    msg['message']
-                )
-                kwname = '{}'.format(screenshot.group(0))
             else:
                 kwname = msg['message']
             startKeywordArgs = {
