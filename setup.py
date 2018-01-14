@@ -33,6 +33,6 @@ setup(
         "py",
         "six>=1.9.0",
         "pytest-allure-adaptor>=1.7.6",
-        "jprops>1.0"
+        "jprops>=1.0"
     ]
 )
