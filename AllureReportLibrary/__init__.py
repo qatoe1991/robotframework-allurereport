@@ -3,7 +3,7 @@ from .allure_listener import *
 from .version import VERSION
 from .common import *
 from .structure import *
-from .constants import *
+from .constant import *
 
 '''Some Allure descriptive line'''
 _version_ = VERSION
@@ -14,6 +14,6 @@ __all__ = [
     "version",
     "common",
     "structure",
-    "constants",
+    "constant",
     "AllureProperties"
 ]

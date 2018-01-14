@@ -127,7 +127,7 @@ class AllureListener(object):
         if(self.PabotPoolId is not None):
             self.threadId = 'PabotPoolId-' + str(self.PabotPoolId)
         else:
-            self.threadId = threading._get_ident()
+            self.threadId = threading.get_ident()
 
         test.labels.append(TestLabel(
             name='thread',
@@ -201,7 +201,7 @@ class AllureListener(object):
         if(self.PabotPoolId is not None):
             self.threadId = 'PabotPoolId-' + str(self.PabotPoolId)
         else:
-            self.threadId = threading._get_ident()
+            self.threadId = threading.get_ident()
 
         test.labels.append(TestLabel(
             name='thread',
